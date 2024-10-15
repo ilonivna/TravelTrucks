@@ -6,14 +6,14 @@ const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const NotFoundPage = lazy(()=>import("../../pages/NotFoundPage/NotFoundPage"))
 
 
-function App() {
+export default function App() {
 
   return (
     <Layout>
       <Routes>
         <Route path="/" element={<HomePage/>}></Route>
-        <Route path="/campers" element={<CatalogPage/>}></Route>
-        <Route path="/campers/:id" element={<DetailsPage/>}></Route>
+        {/* <Route path="/campers" element={<CatalogPage/>}></Route> */}
+        {/* <Route path="/campers/:id" element={<DetailsPage/>}></Route> */}
         <Route path="*" element={<NotFoundPage/>} />
       </Routes>
     </Layout>
