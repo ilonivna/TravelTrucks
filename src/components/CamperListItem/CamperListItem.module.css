@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    gap: 24px;
+    min-height: 320px;
+    padding: 24px;
+    min-width: 886px;
+}
+
+

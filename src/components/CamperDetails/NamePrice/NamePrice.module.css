@@ -1,0 +1,45 @@
+
+
+.input {
+    visibility: hidden;
+    position: absolute;
+    pointer-events: none;
+}
+
+.label {
+    position: relative;
+}
+
+/* HOW TO CHANGE STROKE OF THE ICON WHEN INPUT IS CHECKED */
+/* .label {
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+}
+
+.label:has(.input:checked) {
+    stroke: red;
+   
+} */
+
+.icon {
+    fill: red;
+}
+
+
+.namePriceContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.iconSvg {
+    position: absolute;
+    top: 5px;
+}
+
+.priceFavContainer {
+    display: flex;
+
+    gap: 12px;
+}

@@ -1,0 +1,12 @@
+.descrCont {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.descr {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 525px;
+
+}
