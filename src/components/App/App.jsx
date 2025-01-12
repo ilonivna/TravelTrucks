@@ -8,6 +8,12 @@ const NotFoundPage = lazy(() =>
 );
 const CatalogPage = lazy(() => import("../../pages/CatalogPage/CatalogPage"));
 const CamperPage = lazy(() => import("../../pages/CamperPage/CamperPage"));
+const Reviews = lazy(() =>
+  import("../../components/CamperReviews/CamperReviews")
+);
+const FeaturesExtended = lazy(() =>
+  import("../../components/FeaturesExtended/FeaturesExtended")
+);
 
 export default function App() {
   return (
@@ -15,11 +21,11 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/campers" element={<CatalogPage />}></Route>
-        {
-          <Route path="/campers/:id" element={<CamperPage />}>
-            {/* {FEATURES AND REVIEWS HERE} */}
-          </Route>
-        }
+        <Route path="/campers/:id" element={<CamperPage />}>
+          <Route path="features" element={<FeaturesExtended />}></Route>
+          <Route path="reviews" element={<Reviews />}></Route>
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>

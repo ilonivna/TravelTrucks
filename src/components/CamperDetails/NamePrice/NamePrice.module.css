@@ -1,13 +1,11 @@
-
-
 .input {
-    visibility: hidden;
-    position: absolute;
-    pointer-events: none;
+  visibility: hidden;
+  position: absolute;
+  pointer-events: none;
 }
 
 .label {
-    position: relative;
+  position: relative;
 }
 
 /* HOW TO CHANGE STROKE OF THE ICON WHEN INPUT IS CHECKED */
@@ -22,24 +20,33 @@
 } */
 
 .icon {
-    fill: red;
+  fill: red;
 }
-
 
 .namePriceContainer {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
+.namePriceContDetailed  {
+  flex-direction: column;
+}
+.price {
+  font-size: large;
+  font-weight: 800;
+}
 
 
 .iconSvg {
-    position: absolute;
-    top: 5px;
+  position: absolute;
+  top: 5px;
+}
+.iconNoShow {
+  visibility: hidden;
 }
 
 .priceFavContainer {
-    display: flex;
+  display: flex;
 
-    gap: 12px;
+  gap: 12px;
 }

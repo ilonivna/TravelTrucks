@@ -1,33 +1,22 @@
-import { fetchAllCampers } from "../../redux/campers/operations";
-import {
-  selectCampersList,
-  selectError,
-  selectLoading,
-} from "../../redux/campers/selectors";
-
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Loader from "../Loader/Loader";
+import { useSelector } from "react-redux";
 import CamperDetails from "../CamperDetails/CamperDetails";
+import css from "./CampersList.module.css";
+import { selectLoading } from "../../redux/campers/selectors";
+import Loader from "../Loader/Loader.jsx";
 
-export default function CampersList() {
-  const dispatch = useDispatch();
-  const campersList = useSelector(selectCampersList);
+export default function CampersList({
+  campersList,
+  page,
+  totalPages,
+  handleClick,
+}) {
   const loading = useSelector(selectLoading);
-
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(fetchAllCampers());
-  }, [dispatch]);
+  const isDisabled = totalPages <= page;
 
   return (
     <div>
-      {error && <p>Sorry, an error has occurred, please reload the page</p>}
-
-      {loading ? (
-        <Loader />
-      ) : (
+      {loading && <Loader />}
+      {campersList.length > 0 && (
         <ul>
           {campersList.map((camper) => {
             return (
@@ -37,6 +26,12 @@ export default function CampersList() {
             );
           })}
         </ul>
+      )}
+
+      {campersList.length > 0 && (
+        <button onClick={handleClick} className={css.btn} disabled={isDisabled}>
+          Load more campers
+        </button>
       )}
     </div>
   );

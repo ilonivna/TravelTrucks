@@ -6,15 +6,13 @@ import css from "./Gallery.module.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import icons from "../../../assets/sprite.svg";
-import { selectCamper } from "../../../redux/campers/selectors";
+import { useLocation } from "react-router-dom";
 
-export default function Gallery({ camper }) {
-  const { gallery, name } = camper;
+export default function Gallery({ gallery, name, slidesPerView }) {
   return (
     <Swiper
       modules={[Navigation, Pagination]}
-      slidesPerView={1}
+      slidesPerView={slidesPerView}
       navigation
       pagination={{ clickable: true }}
       loop="true"

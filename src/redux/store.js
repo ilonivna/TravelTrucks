@@ -22,6 +22,7 @@ export const store = configureStore({
   reducer: {
     campers: persistReducer(persistConfig, campersReducer),
   },
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

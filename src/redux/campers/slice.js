@@ -15,18 +15,18 @@ const campersSlice = createSlice({
   name: "campers",
   initialState: {
     items: [],
-    item: [],
+    item: null,
     favorites: [],
     loading: false,
     error: null,
-    total: null,
+    totalItems: null,
     page: 1,
     locations: [],
     filters: {
       location: "",
       equipment: [],
-      type: [],
-      price: null,
+      form: [],
+      price: "",
     },
   },
   reducers: {
@@ -72,15 +72,31 @@ const campersSlice = createSlice({
         state.loading = action.payload;
       },
     },
+    setPrice: {
+      reducer(state, action) {
+        state.filters.price = action.payload;
+      },
+    },
+    clearItems: {
+      reducer(state, action) {
+        state.items = [];
+      },
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllCampers.pending, handlePending)
       .addCase(fetchAllCampers.fulfilled, (state, action) => {
-        state.total = action.payload.total;
-        state.items = action.payload.items;
+        state.totalItems = action.payload.total;
+
         state.loading = false;
         state.error = false;
+        const page = state.page;
+        if (page !== 1) {
+          state.items = [...state.items, ...action.payload.items];
+        } else {
+          state.items = action.payload.items;
+        }
       })
       .addCase(fetchAllCampers.rejected, handleRejected)
       .addCase(fetchCamper.pending, handlePending)
@@ -102,4 +118,6 @@ export const {
   setLoading,
   setPage,
   setTotal,
+  setPrice,
+  clearItems,
 } = campersSlice.actions;

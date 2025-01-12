@@ -3,10 +3,14 @@
     margin-bottom: 24px;
 }
 
-.descr {
+.descriptionShort {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 525px;
 
+}
+
+.descriptionFull {
+ max-width: 1312px;
 }

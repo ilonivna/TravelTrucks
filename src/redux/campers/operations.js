@@ -1,21 +1,24 @@
-// Основні його ендпоінти:
-
-// GET /campers для отримання всіх оголошень (фільтрація обов’язково має виконуватися на бекенді, не на фронті)
-// GET /campers/:id
-// https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers
-
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import getAll from "../../fetch/getAll";
 
 axios.defaults.baseURL = "https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/";
 
 export const fetchAllCampers = createAsyncThunk(
   "campers/all",
   async (_, thunkAPI) => {
-    try {
-      const res = await axios.get("/campers");
+    const state = thunkAPI.getState();
+    const data = {
+      page: state.campers.page,
+      form: state.campers.filters.form,
+      location: state.campers.filters.location,
+      equipment: state.campers.filters.equipment,
+      price: state.campers.filters.price,
+    };
 
-      return res.data;
+    try {
+      const res = await getAll(data);
+      return res;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -27,7 +30,7 @@ export const fetchCamper = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(`campers/${id}`);
-      console.log(response);
+
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

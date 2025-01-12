@@ -1,12 +1,18 @@
-// import { useSelector } from "react-redux";
-// import { selectCamper, selectCampersList } from "../../redux/campers/selectors";
 import icons from "../../../assets/sprite.svg";
 import css from "./Features.module.css";
 
-export default function Features({ camper }) {
+export default function Features({
+  transmission,
+  ac,
+  engine,
+  TV,
+  kitchen,
+  radio,
+  bathroom,
+}) {
   return (
     <ul className={css.list}>
-      {camper?.transmission === "automatic" ? (
+      {transmission === "automatic" ? (
         <li className={css.iconContainer}>
           <svg height={20} width={20}>
             <use className={css.iconSvg} href={`${icons}#icon-automatic`}></use>
@@ -16,7 +22,7 @@ export default function Features({ camper }) {
       ) : (
         <></>
       )}
-      {camper?.AC ? (
+      {ac ? (
         <li className={css.iconContainer}>
           <svg height={20} width={20} className={css.iconSvg}>
             <use href={`${icons}#icon-ac`}></use>
@@ -26,7 +32,7 @@ export default function Features({ camper }) {
       ) : (
         <></>
       )}
-      {camper?.engine === "petrol" ? (
+      {engine === "petrol" ? (
         <li className={css.iconContainer}>
           <svg height={20} width={20} className={css.iconSvg}>
             <use href={`${icons}#icon-petrol`}></use>
@@ -36,7 +42,7 @@ export default function Features({ camper }) {
       ) : (
         <></>
       )}
-      {camper?.engine === "diesel" ? (
+      {engine === "diesel" ? (
         <li className={css.iconContainer}>
           <svg height={20} width={20} className={css.iconSvg}>
             <use href={`${icons}#icon-petrol`}></use>
@@ -46,7 +52,7 @@ export default function Features({ camper }) {
       ) : (
         <></>
       )}
-      {camper?.TV ? (
+      {TV ? (
         <li className={css.iconContainer}>
           <svg height={20} width={20} className={css.iconSvg}>
             <use href={`${icons}#icon-tv`}></use>
@@ -56,7 +62,7 @@ export default function Features({ camper }) {
       ) : (
         <></>
       )}
-      {camper?.kitchen ? (
+      {kitchen ? (
         <li className={css.iconContainer}>
           <svg height={20} width={20} className={css.iconSvg}>
             <use href={`${icons}#icon-kitchen`}></use>
@@ -66,7 +72,7 @@ export default function Features({ camper }) {
       ) : (
         <></>
       )}
-      {camper?.radio ? (
+      {radio ? (
         <li className={css.iconContainer}>
           <svg height={20} width={20} className={css.iconSvg}>
             <use href={`${icons}#icon-radio`}></use>
@@ -76,7 +82,7 @@ export default function Features({ camper }) {
       ) : (
         <></>
       )}
-      {camper?.bathroom ? (
+      {bathroom ? (
         <li className={css.iconContainer}>
           <svg height={20} width={20} className={css.iconSvg}>
             <use href={`${icons}#icon-bath`}></use>
