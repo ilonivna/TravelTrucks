@@ -3,7 +3,6 @@ import SideBar from "../../components/SideBar/SideBar";
 import Loader from "../../components/Loader/Loader";
 import {
   selectCampersList,
-  selectError,
   selectFilters,
   selectPage,
   selectTotalPages,
@@ -14,7 +13,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { setPage } from "../../redux/campers/slice";
 import { useEffect } from "react";
 import css from "./CatalogPage.module.css";
-import iziToast from "izitoast";
+import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 
 export default function CatalogPage() {
   const dispatch = useDispatch();
@@ -23,7 +22,6 @@ export default function CatalogPage() {
   const filters = useSelector(selectFilters);
   const page = useSelector(selectPage);
   const totalPages = useSelector(selectTotalPages);
-  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchAllCampers());
@@ -34,6 +32,7 @@ export default function CatalogPage() {
   }
   return (
     <>
+      <DocumentTitle>Catalog</DocumentTitle>
       {loading && <Loader />}
 
       <div className={css.container}>
