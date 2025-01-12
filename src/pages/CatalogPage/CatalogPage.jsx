@@ -36,13 +36,6 @@ export default function CatalogPage() {
     <>
       {loading && <Loader />}
 
-      {error &&
-        iziToast.info({
-          title: "Sorry!",
-          message: "No campers were found! Reload, please.",
-          color: "#D84343",
-          position: "topRight",
-        })}
       <div className={css.container}>
         <div>
           <SideBar />
